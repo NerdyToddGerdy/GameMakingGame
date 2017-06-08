@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html ng-app="GamingApp">
+   <head>
+      <meta charset="utf-8">
+      <title>Gaming Making Game</title>
+      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
+
+      <!-- <script src="app.py" charset="utf-8"></script> -->
+      <!-- <script src="app.rb" charset="utf-8"></script> -->
+      <link rel="stylesheet" href="./css/main.css">
+   </head>
+   <body ng-controller='MainController as main'>
+      <button ng-click="main.addToCount()" type="button" name="button">Click Me</button>
+      <p><span ng-if="main.addWords == true">$</span>{{main.count}} </p>
+      <p ng-if="main.addNextUpdateNumber == true">next upgrade at ${{main.currentUpdateLevel}}</p>
+      <p ng-if="main.addUpgradeName">{{main.currentUpdateName}}</p>
+      <button ng-if="main.count >= main.currentUpdateLevel" ng-click="main.upgrade()" type="button" name="button">upgrade</button>
+
+
+
+      <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="  crossorigin="anonymous"></script>
+      <script src="app.js" charset="utf-8"></script>
+   </body>
+</html>
