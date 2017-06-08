@@ -9,7 +9,6 @@ app.controller('MainController', ['$http', '$scope', function($http, $scope){
    console.log("controller");
    this.count=0;
    this.updateLevels = [5,8,11,17,25,38];
-   // if at end of array, push last item *1.5
 
    this.updates = [
       {
@@ -31,6 +30,17 @@ app.controller('MainController', ['$http', '$scope', function($http, $scope){
          name: "automate clicks",
          code: function(){
             this.automateClicks = true;
+            var controller = this;
+            setInterval(function(){
+               console.log('interval');
+               controller.addToCount();
+               console.log(controller.count);
+            },30000);
+         }
+      },{
+         name: "end",
+         code: function(){
+            console.log('end');
          }
       }
    ];
@@ -48,9 +58,14 @@ app.controller('MainController', ['$http', '$scope', function($http, $scope){
       this.currentUpdateCode();
       this.count -= this.currentUpdateLevel;
       this.arrayIndex++;
+      console.log(this.arrayIndex);
       this.currentUpdateLevel = this.updateLevels[this.arrayIndex];
       this.currentUpdateName = this.updates[this.arrayIndex].name;
       this.currentUpdateCode = this.updates[this.arrayIndex].code;
+      if (this.arrayIndex == this.updateLevels.length-2) {
+         console.log(this.updateLevels.push(Math.floor(this.updateLevels[this.updateLevels[this.updateLevels.length-1]] * 1.5)));
+         // this.updateLevels.push(Math.floor(this.updateLevels[this.updateLevels[this.updateLevels.length-1]] * 1.5));
+      }
    };
 
 
